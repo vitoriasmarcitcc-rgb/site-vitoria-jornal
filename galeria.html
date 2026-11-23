@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galeria de Fotos — Ilha sem Estado?</title>
+  <meta name="description" content="Galeria de fotos da comunidade da Vila das Peças, Guaraqueçaba (PR)." />
+
+  <!-- Fonte moderna (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind via CDN (sem build) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'] },
+          colors: {
+            forest: '#14400F',
+            moss:   '#6B7A2F',
+            amber:  { DEFAULT: '#E8A94B', dark: '#C98A2E' },
+            sand:   '#F6F1E7',
+            ink:    '#1D2A1C'
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body class="font-sans text-ink bg-white antialiased overflow-x-hidden">
+
+  <!-- ===================== CABEÇALHO / MENU ===================== -->
+  <header id="header" class="fixed inset-x-0 top-0 z-50 is-solid transition-all duration-300">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4" aria-label="Navegação principal">
+      <a href="./index.html#topo" class="text-sm font-bold tracking-[0.25em] text-white">ILHA SEM ESTADO?</a>
+
+      <!-- Menu desktop -->
+      <ul class="hidden items-center gap-8 text-sm font-medium uppercase tracking-wider text-white md:flex">
+        <li><a class="nav-link" href="./index.html#moradores">Moradores</a></li>
+        <li><a class="nav-link text-amber" href="./galeria.html" aria-current="page">Fotografias</a></li>
+        <li><a class="nav-link" href="./index.html#podcast">Podcast</a></li>
+        <li><a class="nav-link" href="./index.html#mapas">Mapas e Documentos</a></li>
+        <li><a class="nav-link" href="./index.html#diario">Diário de Bordo</a></li>
+      </ul>
+
+      <!-- Botão menu mobile -->
+      <button id="menuBtn" class="rounded-lg p-2 text-white md:hidden" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+
+    <!-- Menu mobile -->
+    <div id="mobileMenu" class="hidden bg-forest/95 backdrop-blur md:hidden">
+      <ul class="flex flex-col gap-1 px-5 pb-5 text-sm font-medium uppercase tracking-wider text-white">
+        <li><a class="block rounded-lg px-3 py-3 hover:bg-white/10" href="./index.html#moradores">Moradores</a></li>
+        <li><a class="block rounded-lg px-3 py-3 text-amber hover:bg-white/10" href="./galeria.html" aria-current="page">Fotografias</a></li>
+        <li><a class="block rounded-lg px-3 py-3 hover:bg-white/10" href="./index.html#podcast">Podcast</a></li>
+        <li><a class="block rounded-lg px-3 py-3 hover:bg-white/10" href="./index.html#mapas">Mapas e Documentos</a></li>
+        <li><a class="block rounded-lg px-3 py-3 hover:bg-white/10" href="./index.html#diario">Diário de Bordo</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="topo" class="pt-28 pb-20 sm:pt-32 sm:pb-28">
+    <div class="mx-auto max-w-7xl px-5">
+      <div class="flex flex-col items-start justify-between gap-4 border-b border-sand pb-8 sm:flex-row sm:items-end">
+        <div>
+          <a href="./index.html" class="inline-block text-xs font-bold uppercase tracking-widest text-amber-dark hover:underline">
+            ← Voltar para a reportagem
+          </a>
+          <h1 class="mt-2 text-3xl font-light uppercase tracking-wide sm:text-5xl">Galeria de Fotos</h1>
+        </div>
+      </div>
+
+      <!-- Grade completa das fotografias: SOMENTE AS FOTOS SEM LEGENDAS (gerada pelo js/main.js) -->
+      <div id="galeriaGrid" class="mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"></div>
+    </div>
+  </main>
+
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="bg-forest py-12 text-sm text-white/85">
+    <div class="mx-auto grid max-w-7xl items-center gap-8 px-5 text-center md:grid-cols-3 md:text-left">
+      <div>
+        <p class="font-bold tracking-[0.25em] text-white">ILHA SEM ESTADO?</p>
+        <p class="mt-2 text-xs text-white/75">A vida, os desafios e as transformações da comunidade da Vila das Peças</p>
+      </div>
+
+      <div class="space-y-1 text-center">
+        <p class="font-semibold text-white">Vitória da Silva Smarci</p>
+        <p><a href="mailto:vitoriasmarci.jor@gmail.com" class="text-amber hover:underline">vitoriasmarci.jor@gmail.com</a></p>
+        <p><a href="tel:+5541988091058" class="hover:text-white">41 98809-1058</a></p>
+      </div>
+
+      <div class="md:text-right">
+        <span class="block text-[11px] uppercase tracking-widest text-white/60">Desenvolvido por</span>
+        <span class="font-extrabold tracking-widest text-white">CAMUTZE SOLUTIONS</span>
+        <div class="mt-3">
+          <a href="#topo" class="btn-ghost inline-block text-xs">Voltar ao topo ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== LIGHTBOX (ampliar fotos) ===================== -->
+  <div id="lightbox" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/90 p-4" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+    <button id="lbClose" type="button" class="absolute right-5 top-5 text-4xl leading-none text-white" aria-label="Fechar">×</button>
+    <button id="lbPrev" type="button" class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/15 px-3.5 py-2 text-2xl text-white hover:bg-white/30" aria-label="Foto anterior">‹</button>
+    <button id="lbNext" type="button" class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/15 px-3.5 py-2 text-2xl text-white hover:bg-white/30" aria-label="Próxima foto">›</button>
+    <figure class="max-h-full max-w-4xl">
+      <img id="lbImg" src="" alt="" class="max-h-[82vh] w-full rounded-lg object-contain" />
+      <figcaption id="lbCap" class="hidden"></figcaption>
+    </figure>
+  </div>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>

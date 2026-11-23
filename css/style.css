@@ -1,0 +1,160 @@
+/* =====================================================
+   ILHA SEM ESTADO? — estilos complementares ao Tailwind
+   ===================================================== */
+
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+/* ---------- Cabeçalho que fica sólido ao rolar ---------- */
+#header.is-solid {
+  background: rgba(20, 64, 15, 0.96);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- Links do menu: destaque só na palavra ---------- */
+.nav-link { position: relative; padding: 4px 0; transition: color .25s; }
+.nav-link::after {
+  content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0;
+  background: #E8A94B; transition: width .3s ease;
+}
+.nav-link:hover { color: #E8A94B; }
+.nav-link:hover::after { width: 100%; }
+
+/* ---------- Destaque exclusivo na palavra "SEM" do título ---------- */
+.highlight-sem {
+  position: relative;
+  display: inline-block;
+  color: #E8A94B;
+  transition: color .25s ease, text-shadow .25s ease;
+}
+.highlight-sem::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.04em;
+  height: 0.08em;
+  background: #E8A94B;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .35s cubic-bezier(.16, 1, .3, 1);
+}
+.highlight-sem:hover,
+.highlight-sem:focus-visible {
+  color: #fff;
+  text-shadow: 0 0 24px rgba(232, 169, 75, 0.9);
+}
+.highlight-sem:hover::after,
+.highlight-sem:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Botões ---------- */
+.btn-primary {
+  background: #E8A94B; color: #14400F; font-weight: 700; font-size: .85rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: .9rem 2rem; border-radius: 999px;
+  transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+}
+.btn-primary:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.25); }
+
+.btn-ghost {
+  border: 1px solid rgba(255,255,255,.4); color: #fff; padding: .6rem 1.4rem; border-radius: 999px;
+  transition: background .25s ease, color .25s ease;
+}
+.btn-ghost:hover { background: #fff; color: #14400F; }
+
+/* ---------- Animações de entrada ---------- */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* Bloco que entra da esquerda: rápido no início, suave no fim */
+.reveal-left { opacity: 0; transform: translateX(-80px); transition: opacity .85s ease, transform .85s cubic-bezier(.16, 1, .3, 1); }
+.reveal-left.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-left { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Cards ---------- */
+.card { background: #fff; border-radius: 1.25rem; padding: 2rem; box-shadow: 0 8px 30px rgba(20,64,15,.08); }
+.card-title { font-size: 1.15rem; font-weight: 700; color: #14400F; margin-bottom: 1rem; }
+
+.stat-card {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: #F6F1E7; border-radius: 1.25rem; padding: 1.75rem 1rem; text-align: center;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.stat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(20,64,15,.12); }
+.stat-num { font-size: 2.1rem; font-weight: 800; color: #14400F; line-height: 1; }
+.stat-label { margin-top: .5rem; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: #6B7A2F; font-weight: 600; }
+
+/* ---------- Linha do tempo ---------- */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+.tl-item { position: relative; flex: 0 0 155px; padding-top: 3rem; text-align: center; scroll-snap-align: center; cursor: pointer; }
+.tl-item::before {
+  content: ""; position: absolute; top: 14px; left: 0; right: 0; height: 2px; background: #6B7A2F;
+}
+.tl-dot {
+  position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+  width: 18px; height: 18px; border-radius: 50%; background: #6B7A2F; border: 3px solid #F6F1E7;
+  transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+}
+.tl-item:hover .tl-dot, .tl-item.active .tl-dot { background: #E8A94B; transform: translateX(-50%) scale(1.45); box-shadow: 0 0 0 6px rgba(232,169,75,.25); }
+.tl-year { display: block; font-weight: 800; color: #14400F; font-size: .95rem; }
+.tl-title { display: block; margin-top: .35rem; padding: 0 .5rem; font-size: .72rem; line-height: 1.35; color: rgba(29,42,28,.7); }
+.tl-item.active .tl-year { color: #C98A2E; }
+
+.tl-arrow, .car-arrow {
+  position: absolute; z-index: 5; display: flex; align-items: center; justify-content: center;
+  width: 2.5rem; height: 2.5rem; border-radius: 999px; background: #14400F; color: #fff; font-size: 1.5rem; line-height: 1;
+  box-shadow: 0 6px 16px rgba(0,0,0,.2); transition: background .25s ease, transform .25s ease;
+}
+.tl-arrow { top: 0; }
+.car-arrow { top: 42%; transform: translateY(-50%); }
+.tl-arrow:hover, .car-arrow:hover { background: #E8A94B; color: #14400F; }
+
+/* ---------- Carrossel ---------- */
+.car-slide { flex: 0 0 88%; scroll-snap-align: center; overflow: hidden; border-radius: 1.25rem; background: #F6F1E7; box-shadow: 0 6px 20px rgba(20,64,15,.08); }
+.car-slide img { transition: transform .8s ease; }
+.car-slide:hover img { transform: scale(1.04); }
+@media (min-width: 640px)  { .car-slide { flex-basis: 48%; } }
+@media (min-width: 1024px) { .car-slide { flex-basis: 32%; } }
+
+/* ---------- Efeito "escrita jornalística" ---------- */
+.typing::after { content: "▍"; margin-left: 2px; color: #E8A94B; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- Vídeo que se centraliza ao rolar ---------- */
+.parallax-video { will-change: transform; transition: transform .1s linear; }
+
+/* ---------- Vídeos / players ---------- */
+.video-box { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 1rem; background: #000; box-shadow: 0 12px 32px rgba(0,0,0,.25); }
+.video-box iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* ---------- Cadeado (relatórios) ---------- */
+.lock-card { position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 1rem; box-shadow: 0 10px 28px rgba(20,64,15,.18); }
+.lock-card img { transition: transform .6s ease, filter .4s ease; }
+.lock-card:hover img { transform: scale(1.06); filter: brightness(.7); }
+.lock-badge {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 3.5rem; height: 3.5rem; border-radius: 999px; background: #14400F; color: #E8A94B;
+  display: flex; align-items: center; justify-content: center; transition: transform .3s ease, background .3s ease;
+}
+.lock-card:hover .lock-badge { transform: translate(-50%, -50%) scale(1.12); background: #E8A94B; color: #14400F; }
+
+/* ---------- Galeria ---------- */
+.gal-card { overflow: hidden; border-radius: 1rem; background: #F6F1E7; box-shadow: 0 8px 26px rgba(20,64,15,.08); transition: transform .3s ease, box-shadow .3s ease; }
+.gal-card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(20,64,15,.15); }
+.gal-card button { display: block; width: 100%; overflow: hidden; }
+.gal-card img { aspect-ratio: 4 / 3; width: 100%; object-fit: cover; transition: transform .6s ease; }
+.gal-card:hover img { transform: scale(1.06); }
+
+/* ---------- Diário de bordo ---------- */
+.diary-entry { border-left: 3px solid #E8A94B; padding-left: 1.25rem; }
+
+/* ---------- Foco acessível ---------- */
+a:focus-visible, button:focus-visible { outline: 3px solid #E8A94B; outline-offset: 3px; }

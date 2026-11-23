@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ilha sem Estado? — A vida, os desafios e as transformações da comunidade da Vila das Peças</title>
+  <meta name="description" content="A vida, os desafios e as transformações da comunidade da Vila das Peças, Guaraqueçaba (PR)." />
+
+  <!-- Fonte moderna (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;1,600&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind via CDN (sem build) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            serif: ['Lora', 'Georgia', 'serif']
+          },
+          colors: {
+            forest: '#14400F',   // verde-floresta (faixas e destaques)
+            moss:   '#6B7A2F',   // verde-oliva (linha do tempo)
+            amber:  { DEFAULT: '#E8A94B', dark: '#C98A2E' }, // âmbar (detalhes)
+            sand:   '#F6F1E7',   // fundo areia
+            ink:    '#1D2A1C'    // texto principal
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body class="font-sans text-ink bg-white antialiased overflow-x-hidden">
+
+  <!-- ===================== CABEÇALHO / MENU ===================== -->
+  <header id="header" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4" aria-label="Navegação principal">
+      <a href="#topo" class="text-sm font-bold tracking-[0.25em] text-white">ILHA SEM ESTADO?</a>
+
+      <!-- Menu desktop (hover destaca só a palavra) -->
+      <ul class="hidden items-center gap-8 text-sm font-medium uppercase tracking-wider text-white md:flex">
+        <li><a class="nav-link" href="#moradores">Moradores</a></li>
+        <li><a class="nav-link" href="./galeria.html">Fotografias</a></li>
+        <li><a class="nav-link" href="#podcast">Podcast</a></li>
+        <li><a class="nav-link" href="#mapas">Mapas e Documentos</a></li>
+        <li><a class="nav-link" href="#diario">Diário de Bordo</a></li>
+      </ul>
+
+      <!-- Botão menu mobile -->
+      <button id="menuBtn" class="rounded-lg p-2 text-white md:hidden" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+
+    <!-- Menu mobile -->
+    <div id="mobileMenu" class="hidden bg-forest/95 backdrop-blur md:hidden">
+      <ul class="flex flex-col gap-1 px-5 pb-5 text-sm font-medium uppercase tracking-wider text-white">
+        <li><a class="block rounded-lg px-3 py-3 hover:bg-white/10" href="#moradores">Moradores</a></li>
+        <li><a class="block rounded-lg px-3 py-3 hover:bg-white/10" href="./galeria.html">Fotografias</a></li>
+        <li><a class="block rounded-lg px-3 py-3 hover:bg-white/10" href="#podcast">Podcast</a></li>
+        <li><a class="block rounded-lg px-3 py-3 hover:bg-white/10" href="#mapas">Mapas e Documentos</a></li>
+        <li><a class="block rounded-lg px-3 py-3 hover:bg-white/10" href="#diario">Diário de Bordo</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================== HERO ===================== -->
+    <section id="topo" class="relative flex min-h-[100svh] items-center justify-center overflow-hidden">
+      <video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline poster="./src/maps/mata_e_agua.jpg" aria-hidden="true">
+        <source src="./src/videos/video_ilha.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/30 to-forest/85"></div>
+
+      <div class="relative z-10 px-6 text-center text-white">
+        <h1 class="reveal text-4xl font-light tracking-[0.12em] sm:text-6xl lg:text-7xl">
+          ILHA <span class="highlight-sem font-extrabold" tabindex="0">SEM</span> ESTADO?
+        </h1>
+        <p class="reveal mx-auto mt-6 max-w-2xl text-xs font-medium uppercase leading-relaxed tracking-[0.35em] text-white/95 sm:text-sm" style="transition-delay:.15s">
+          A vida, os desafios e as transformações da comunidade da Vila das Peças
+        </p>
+        <a href="#litoral" class="btn-primary reveal mt-10 inline-block" style="transition-delay:.3s">Conhecer a história</a>
+      </div>
+
+      <a href="#litoral" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/80" aria-label="Rolar para baixo">
+        <svg class="h-7 w-7 animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </a>
+    </section>
+
+    <!-- ===================== O LITORAL (introdução) ===================== -->
+    <section id="litoral" class="mx-auto max-w-5xl px-5 py-20 sm:py-28">
+      <div class="reveal mx-auto max-w-3xl space-y-5 text-left sm:text-justify leading-relaxed text-ink/90">
+        <p>
+          O litoral do Paraná, que é o menor dentre os estados costeiros do país, tem uma extensão territorial de cerca de
+          98 km a 105 km de extensão. É composto por sete municípios e destaca-se por sua rica natureza, abrigando mais
+          de 120 praias, 50 ilhas e importantes áreas portuárias, como a de Paranaguá, uma das maiores do Brasil.
+          (SECRETARIA ESTADUAL DO TURISMO, 2025). O clima do litoral paranaense é predominantemente subtropical
+          úmido, sem um período seco definido, com verões quentes e geadas menos frequentes, as chuvas se tornam ainda
+          mais abundantes e as temperaturas no verão não chegam a ser tão altas. As temperaturas médias anuais
+          situam-se entre 19°C e 21°C, enquanto a precipitação média anual ultrapassa 2.000 mm, com maior concentração
+          de chuvas nos meses de verão. A influência do Oceano Atlântico e da Serra do Mar contribui para a elevada
+          umidade e para a regular distribuição das chuvas ao longo do ano. (Vanhoni; Mendonça, 2008).
+        </p>
+        <p>
+          Essa dinâmica atmosférica é controlada pela interação de sistemas tropicais e polares, além da forte influência do
+          oceano e do próprio relevo da região (Vanhoni; Mendonça, 2008). Mas, atualmente há alterações promovidas pelas
+          mudanças climáticas em curso, e por fenômenos cíclicos como o El Niño e La Niña, que também se intensificam.
+        </p>
+      </div>
+
+      <!-- Cards de números -->
+      <div class="mt-14 grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <div class="stat-card reveal"><span class="stat-num">98–105</span><span class="stat-label">km de extensão</span></div>
+        <div class="stat-card reveal" style="transition-delay:.08s"><span class="stat-num">7</span><span class="stat-label">municípios</span></div>
+        <div class="stat-card reveal" style="transition-delay:.16s"><span class="stat-num">120+</span><span class="stat-label">praias</span></div>
+        <div class="stat-card reveal" style="transition-delay:.24s"><span class="stat-num">50</span><span class="stat-label">ilhas</span></div>
+      </div>
+    </section>
+
+    <!-- ===================== O SURGIMENTO — LINHA DO TEMPO ===================== -->
+    <section id="surgimento" class="bg-sand py-20 sm:py-28">
+      <div class="mx-auto max-w-6xl px-5">
+        <header class="reveal text-center">
+          <h2 class="text-3xl font-light uppercase tracking-wide sm:text-5xl">O Surgimento</h2>
+          <p class="mt-3 text-lg text-ink/70">Linha do tempo histórica da região das ilhas</p>
+          <p class="mt-2 text-xs font-semibold uppercase tracking-widest text-amber-dark">Clique nos pontos para explorar</p>
+        </header>
+
+        <!-- Linha do tempo interativa (gerada pelo js/main.js) -->
+        <div class="reveal relative mt-14">
+          <button id="tlPrev" type="button" class="tl-arrow left-0" aria-label="Anterior">‹</button>
+          <button id="tlNext" type="button" class="tl-arrow right-0" aria-label="Próximo">›</button>
+          <div id="timelineTrack" class="no-scrollbar relative flex snap-x gap-0 overflow-x-auto px-10 pb-4"></div>
+        </div>
+
+        <!-- Painel de detalhe do ponto selecionado -->
+        <div id="timelinePanel" class="mx-auto mt-8 max-w-2xl rounded-2xl bg-white p-6 text-center shadow-md" aria-live="polite"></div>
+
+        <!-- Texto: Guaraqueçaba / Superagui -->
+        <div class="mt-20 grid gap-8 lg:grid-cols-2">
+          <article class="reveal card">
+            <h3 class="card-title">Parque Nacional de Superagui</h3>
+            <p class="text-left sm:text-justify leading-relaxed text-ink/85">
+              Nesse litoral, as comunidades da Ilha das Peças e da Ilha de Superagui estão localizadas no município de
+              Guaraqueçaba. O município situa-se a 169 quilômetros de Curitiba e nele se localiza o Parque Nacional de
+              Superagui, na ilha do mesmo nome e em parte da Ilha das Peças. A área de proteção ambiental foi criada em 1989
+              com o objetivo de preservar ecossistemas da Mata Atlântica e modos de vida tradicionais. A unidade de
+              conservação possui uma área de 33.928,00 hectares, conforme dados do Instituto Chico Mendes de Conservação
+              da Biodiversidade - ICMBio (2024), órgão federal responsável pelo território protegido. A região é historicamente
+              ocupada por populações caiçaras, formadas pela miscigenação entre povos indígenas, europeus e africanos, que
+              desenvolveram formas de subsistência diretamente ligadas ao território, especialmente à pesca artesanal e ao uso
+              dos recursos naturais.
+            </p>
+          </article>
+
+          <article class="reveal card" style="transition-delay:.1s">
+            <h3 class="card-title">Guaraqueçaba e os territórios não urbanos</h3>
+            <p class="text-left sm:text-justify leading-relaxed text-ink/85">
+              Guaraqueçaba possui uma área de 201.135,70 hectares e, conta com aproximadamente 7.430 habitantes. Desse
+              total, 4.686 correspondem à população não urbana e 2.744 à população urbana, conforme o Censo de 2010. (IBGE,
+              2010). As comunidades das ilhas do litoral do Paraná, como a Ilha das Peças e de Superagui, enquadram-se como
+              não urbanas, tanto por sua localização fora dos perímetros urbanos quanto por características como o isolamento
+              geográfico, o acesso majoritariamente realizado por vias marítimas, a baixa densidade populacional e a limitada
+              presença de equipamentos e serviços públicos. Além disso, essas localidades apresentam dinâmicas sociais e
+              econômicas fortemente vinculadas a práticas tradicionais, como a pesca artesanal e o uso direto dos recursos
+              naturais, o que as distanciam ainda mais dos padrões urbanos convencionais, reforçando sua classificação
+              enquanto territórios não urbanos (IBGE 2010).
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONHEÇA A COMUNIDADE E A SUA CULTURA — CARROSSEL ===================== -->
+    <section id="comunidade" class="py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-5">
+        <h2 class="reveal text-center text-2xl font-light uppercase tracking-wide sm:text-4xl">Conheça a comunidade e a sua cultura</h2>
+        <p class="reveal mt-3 text-center text-ink/70">Slides de fotos da ilha</p>
+
+        <!-- Carrossel suave com legendas e autoria (gerado pelo js/main.js a partir de ./src/carrossel/) -->
+        <div class="reveal relative mt-10">
+          <div id="carousel" class="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2"></div>
+          <button id="carPrev" type="button" class="car-arrow left-2" aria-label="Foto anterior">‹</button>
+          <button id="carNext" type="button" class="car-arrow right-2" aria-label="Próxima foto">›</button>
+        </div>
+
+        <!-- Textos da Página 2 do PDF -->
+        <div class="reveal mx-auto mt-14 max-w-3xl space-y-5 text-left sm:text-justify leading-relaxed text-ink/85">
+          <p>
+            O litoral do Paraná, que é o menor dentre os estados costeiros do país, tem uma extensão territorial de cerca de
+            98 km a 105 km de extensão. É composto por sete municípios e destaca-se por sua rica natureza, abrigando mais
+            de 120 praias, 50 ilhas e importantes áreas portuárias, como a de Paranaguá, uma das maiores do Brasil.
+            (SECRETARIA ESTADUAL DO TURISMO, 2025). O clima do litoral paranaense é predominantemente subtropical
+            úmido, sem um período seco definido, com verões quentes e geadas menos frequentes, as chuvas se tornam ainda
+            mais abundantes e as temperaturas no verão não chegam a ser tão altas. As temperaturas médias anuais
+            situam-se entre 19°C e 21°C, enquanto a precipitação média anual ultrapassa 2.000 mm, com maior concentração
+            de chuvas nos meses de verão. A influência do Oceano Atlântico e da Serra do Mar contribui para a elevada
+            umidade e para a regular distribuição das chuvas ao longo do ano. (Vanhoni; Mendonça, 2008).
+          </p>
+          <p>
+            Essa dinâmica atmosférica é controlada pela interação de sistemas tropicais e polares, além da forte influência do
+            oceano e do próprio relevo da região (Vanhoni; Mendonça, 2008). Mas, atualmente há alterações promovidas pelas
+            mudanças climáticas em curso, e por fenômenos cíclicos como o El Niño e La Niña, que também se intensificam.
+          </p>
+        </div>
+
+       
+
+        <div class="reveal mx-auto max-w-3xl space-y-5 text-left sm:text-justify leading-relaxed text-ink/85">
+          <p>
+            Nesse litoral, as comunidades da Ilha das Peças e da Ilha de Superagui estão localizadas no município de
+            Guaraqueçaba. O município situa-se a 169 quilômetros de Curitiba e nele se localiza o Parque Nacional de
+            Superagui, na ilha do mesmo nome e em parte da Ilha das Peças. A área de proteção ambiental foi criada em 1989
+            com o objetivo de preservar ecossistemas da Mata Atlântica e modos de vida tradicionais. A unidade de
+            conservação possui uma área de 33.928,00 hectares, conforme dados do Instituto Chico Mendes de Conservação
+            da Biodiversidade - ICMBio (2024), órgão federal responsável pelo território protegido. A região é historicamente
+            ocupada por populações caiçaras, formadas pela miscigenação entre povos indígenas, europeus e africanos, que
+            desenvolveram formas de subsistência diretamente ligadas ao território, especialmente à pesca artesanal e ao uso
+            dos recursos naturais.
+          </p>
+          <p>
+            Guaraqueçaba possui uma área de 201.135,70 hectares e, conta com aproximadamente 7.430 habitantes. Desse
+            total, 4.686 correspondem à população não urbana e 2.744 à população urbana, conforme o Censo de 2010. (IBGE,
+            2010). As comunidades das ilhas do litoral do Paraná, como a Ilha das Peças e de Superagui, enquadram-se como
+            não urbanas, tanto por sua localização fora dos perímetros urbanos quanto por características como o isolamento
+            geográfico, o acesso majoritariamente realizado por vias marítimas, a baixa densidade populacional e a limitada
+            presença de equipamentos e serviços públicos. Além disso, essas localidades apresentam dinâmicas sociais e
+            econômicas fortemente vinculadas a práticas tradicionais, como a pesca artesanal e o uso direto dos recursos
+            naturais, o que as distanciam ainda mais dos padrões urbanos convencionais, reforçando sua classificação
+            enquanto territórios não urbanos (IBGE 2010).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VÍDEO YT_01 + TEXTO "JORNALÍSTICO" (PÁGINA 3) ===================== -->
+    <section id="entrevista-destaque" class="bg-forest py-16 text-white sm:py-24">
+      <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 md:grid-cols-2">
+        <!-- Texto à esquerda surgindo como escrita jornalística -->
+        <p class="leading-relaxed text-white/95" data-typewriter>
+          O litoral do Paraná, que é o menor dentre os estados costeiros do país, tem uma extensão
+          territorial de cerca de 98 km a 105 km de extensão. É composto por sete municípios e destaca-se
+          por sua rica natureza, abrigando mais de 120 praias, 50 ilhas e importantes áreas
+          portuárias, como a de Paranaguá, uma das maiores do Brasil. (SECRETARIA ESTADUAL DO
+          TURISMO, 2025). O clima do litoral paranaense é predominantemente subtropical úmido,
+        </p>
+
+        <!-- Vídeo que se centraliza ao rolar na faixa verde -->
+        <div>
+          <div id="ytDestaque" class="parallax-video"></div>
+          <div class="mt-3 flex items-center justify-between text-xs text-white/80">
+            <span class="font-semibold">Entrevista com professor e historiador Zé Muniz</span>
+            <a href="https://youtu.be/AKAWWUSCmUQ" target="_blank" rel="noopener noreferrer" class="text-amber underline hover:text-white">Watch on YouTube</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOTO COM LEGENDA AO LADO + CITAÇÃO PINCEL (PÁGINA 3) ===================== -->
+    <section class="relative overflow-hidden py-20 sm:py-28">
+      <div class="mx-auto max-w-5xl px-5">
+
+        <!-- Foto com legenda ao lado -->
+        <figure class="reveal grid items-center gap-8 rounded-2xl bg-sand p-6 shadow-sm md:grid-cols-12">
+          <div class="md:col-span-7 overflow-hidden rounded-xl">
+            <img src="./src/carrossel/foto_5.jpg" alt="Renato Caiçara mostrando a torre do Mato da Ilha na baía de Paranaguá" loading="lazy" class="aspect-[16/10] w-full object-cover" />
+          </div>
+          <figcaption class="md:col-span-5 border-l-4 border-amber pl-4 text-sm leading-relaxed text-ink/85">
+            Renato Caiçara mostrando a torre do Mato da Ilha que fazia parte de um antigo sistema de controle e vigilância da navegação na baía de Paranaguá. Autoria da foto: Daniel Chapaval
+          </figcaption>
+        </figure>
+
+        <!-- Texto normal -->
+        <div class="reveal mx-auto mt-14 max-w-3xl space-y-5 text-left sm:text-justify leading-relaxed text-ink/85">
+          <p>
+            O litoral do Paraná, que é o menor dentre os estados costeiros do país, tem uma extensão territorial de cerca de
+            98 km a 105 km de extensão. É composto por sete municípios e destaca-se por sua rica natureza, abrigando mais
+            de 120 praias, 50 ilhas e importantes áreas portuárias, como a de Paranaguá, uma das maiores do Brasil.
+            (SECRETARIA ESTADUAL DO TURISMO, 2025). O clima do litoral paranaense é predominantemente subtropical
+            úmido, sem um período seco definido, com verões quentes e geadas menos frequentes, as chuvas se tornam
+            ainda mais abundantes e as temperaturas no verão não chegam a ser tão altas. As temperaturas médias anuais
+            situam-se entre 19°C e 21°C, enquanto a precipitação média anual ultrapassa 2.000 mm, com maior
+            concentração de chuvas nos meses de verão. A influência do Oceano Atlântico e da Serra do Mar contribui para a
+            elevada umidade e para a regular distribuição das chuvas ao longo do ano. (Vanhoni; Mendonça, 2008).
+          </p>
+          <p>
+            Essa dinâmica atmosférica é controlada pela interação de sistemas tropicais e polares, além da forte influência
+            do oceano e do próprio relevo da região (Vanhoni; Mendonça, 2008). Mas, atualmente há alterações promovidas
+            pelas mudanças climáticas em curso, e por fenômenos cíclicos como o El Niño e La Niña, que também se
+            intensificam.
+          </p>
+        </div>
+
+        <!-- Texto destacado um pouco mais à direita com fonte maior entre aspas feita a pincel/serifa -->
+        <div class="reveal mt-16 flex justify-end">
+          <blockquote class="relative max-w-3xl md:w-4/5 rounded-2xl bg-sand/70 p-8 sm:p-10">
+            <span class="font-serif text-7xl leading-none text-amber block -mb-5 select-none" aria-hidden="true">“</span>
+            <p class="font-serif italic text-2xl font-semibold uppercase leading-snug tracking-wide text-forest sm:text-3xl">
+              ESSA DINÂMICA ATMOSFÉRICA É CONTROLADA PELA INTERAÇÃO DE SISTEMAS TROPICAIS E POLARES, ALÉM DA FORTE INFLUÊNCIA DO OCEANO E DO PRÓPRIO RELEVO DA REGIÃO
+            </p>
+            <span class="font-serif text-7xl leading-none text-amber block text-right -mt-5 select-none" aria-hidden="true">”</span>
+          </blockquote>
+        </div>
+
+        <!-- Texto normal conectando os dois textos -->
+        <p class="reveal mx-auto mt-12 max-w-3xl text-left sm:text-justify leading-relaxed text-ink/85">
+          O litoral do Paraná, que é o menor dentre os estados costeiros do país, tem uma extensão territorial de
+          cerca de 98 km a 105 km de extensão. É composto por sete municípios e destaca-se por sua rica natureza,
+          abrigando mais de 120 praias, 50 ilhas e importantes áreas portuárias, como a de Paranaguá, uma das
+          maiores do Brasil. (SECRETARIA ESTADUAL DO TURISMO, 2025). O clima do litoral paranaense é
+        </p>
+
+        <!-- Dois blocos com texto normal à esquerda da imagem -->
+        <div class="mt-14 space-y-10">
+          <div class="reveal grid items-center gap-8 rounded-2xl bg-sand p-6 md:grid-cols-2">
+            <p class="text-left sm:text-justify leading-relaxed text-ink/85">
+              O litoral do Paraná, que é o menor dentre os estados costeiros do país, tem uma extensão territorial de cerca de
+              98 km a 105 km de extensão. É composto por sete municípios e destaca-se por sua rica natureza, abrigando mais
+              de 120 praias, 50 ilhas e importantes áreas portuárias, como a de Paranaguá, uma das maiores do Brasil.
+              (SECRETARIA ESTADUAL DO TURISMO, 2025). O clima do litoral paranaense é
+            </p>
+            <img src="./src/carrossel/foto_4.jpg" alt="Pescadores observam o mar" loading="lazy" class="aspect-[16/10] w-full rounded-xl object-cover shadow-sm" />
+          </div>
+
+          <div class="reveal grid items-center gap-8 rounded-2xl bg-sand p-6 md:grid-cols-2">
+            <p class="text-left sm:text-justify leading-relaxed text-ink/85">
+              O litoral do Paraná, que é o menor dentre os estados costeiros do país, tem uma extensão territorial de cerca de
+              98 km a 105 km de extensão. É composto por sete municípios e destaca-se por sua rica natureza, abrigando mais
+              de 120 praias, 50 ilhas e importantes áreas portuárias, como a de Paranaguá, uma das maiores do Brasil.
+              (SECRETARIA ESTADUAL DO TURISMO, 2025). O clima do litoral paranaense é
+            </p>
+            <img src="./src/carrossel/foto_12.jpg" alt="Aparição da baleia que visita a Ilha" loading="lazy" class="aspect-[16/10] w-full rounded-xl object-cover shadow-sm" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MORADORES (PÁGINA 4) ===================== -->
+    <section id="moradores">
+      <!-- Foto de capa grandona com título em cima -->
+      <div class="relative flex h-72 items-center justify-center overflow-hidden sm:h-[26rem]">
+        <img src="./src/galeria/foto_79.jpg" alt="Moradores da Vila das Peças" loading="lazy" class="absolute inset-0 h-full w-full object-cover" />
+        <div class="absolute inset-0 bg-black/45"></div>
+        <h2 class="reveal relative px-5 text-center text-3xl font-extrabold uppercase tracking-wide text-white drop-shadow sm:text-5xl">
+          Conheça a história dos moradores
+        </h2>
+      </div>
+
+      <!-- Lista das 6 entrevistas gerada pelo js/main.js (vídeos seguidos de texto na lateral) -->
+      <div id="moradoresList" class="mx-auto max-w-6xl space-y-16 px-5 py-20"></div>
+    </section>
+
+    <!-- ===================== PODCAST (PÁGINA 5) ===================== -->
+    <section id="podcast" class="bg-forest pb-20 text-white sm:pb-28">
+      <!-- Capa aérea mata e rio -->
+      <div class="relative flex h-64 items-center justify-center overflow-hidden sm:h-80">
+        <img src="./src/maps/mata_e_agua.jpg" alt="Vista aérea da mata e rio na Vila das Peças" loading="lazy" class="absolute inset-0 h-full w-full object-cover" />
+        <div class="absolute inset-0 bg-black/45"></div>
+        <h2 class="reveal relative text-center text-3xl font-extrabold uppercase tracking-[0.2em] text-white drop-shadow sm:text-5xl">
+          Podcast
+        </h2>
+      </div>
+
+      <!-- 5 Episódios do Spotify gerados pelo js/main.js -->
+      <div id="podcastList" class="mx-auto mt-14 max-w-4xl space-y-10 px-5"></div>
+    </section>
+
+    <!-- ===================== MAPAS E RELATÓRIOS (PÁGINA 6) ===================== -->
+    <section id="mapas" class="bg-sand py-20 sm:py-28">
+      <div class="mx-auto max-w-6xl px-5">
+        <h2 class="reveal text-center text-3xl font-light uppercase tracking-wide sm:text-5xl">Mapas e Relatórios</h2>
+
+        <!-- Cadeados (texto normal à esquerda, cadeado à direita) -->
+        <div class="mt-14 space-y-10">
+          <article class="reveal grid items-center gap-8 rounded-2xl bg-white p-6 shadow-sm md:grid-cols-[1fr_220px]">
+            <div>
+              <h3 class="text-lg font-bold text-amber-dark">Relatório 01</h3>
+              <p class="mt-2 text-left sm:text-justify leading-relaxed text-ink/85">
+                Jéssica Ritta, sua mãe e sua avó compartilham histórias, memórias e experiências de vida na Ilha
+                das Peças. Por meio das lembranças de três gerações de mulheres, a conversa percorre as
+                transformações da comunidade, os desafios de viver em uma ilha e as mudanças que marcaram o
+                cotidiano de seus moradores ao longo do tempo.
+              </p>
+              <p class="mt-3 text-left sm:text-justify leading-relaxed text-ink/85">
+                A entrevista resgata a história familiar e a relação das entrevistadas com o lugar onde vivem. Da
+                infância às experiências da vida adulta, passando pela formação de suas famílias e pela criação
+                dos filhos, as três mulheres ajudam a compreender o papel dos vínculos familiares, da convivência
+                comunitária e dos conhecimentos transmitidos entre gerações, que contribuem para manter viva
+                a memória e a identidade caiçara.
+              </p>
+            </div>
+            <a href="#" class="lock-card group" aria-label="Abrir relatório 01">
+              <img src="./src/maps/barco_nome_da_ilha.jpg" alt="Capa do relatório 01" loading="lazy" class="h-full w-full object-cover" />
+              <span class="lock-badge"><svg viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor"><path d="M17 9V7a5 5 0 00-10 0v2H5v12h14V9h-2zm-8-2a3 3 0 016 0v2H9V7z"/></svg></span>
+            </a>
+          </article>
+
+          <article class="reveal grid items-center gap-8 rounded-2xl bg-white p-6 shadow-sm md:grid-cols-[1fr_220px]">
+            <div>
+              <h3 class="text-lg font-bold text-amber-dark">Relatório 02</h3>
+              <p class="mt-2 text-left sm:text-justify leading-relaxed text-ink/85">
+                Jéssica Ritta, sua mãe e sua avó compartilham histórias, memórias e experiências de vida na Ilha das Peças. Por
+                meio das lembranças de três gerações de mulheres, a conversa percorre as transformações da comunidade, os
+                desafios de viver em uma ilha e as mudanças que marcaram o cotidiano de seus moradores ao longo do tempo.
+              </p>
+              <p class="mt-3 text-left sm:text-justify leading-relaxed text-ink/85">
+                A entrevista resgata a história familiar e a relação das entrevistadas com o lugar onde vivem. Da infância às
+                experiências da vida adulta, passando pela formação de suas famílias e pela criação dos filhos, as três mulheres
+                ajudam a compreender o papel dos vínculos familiares, da convivência comunitária e dos conhecimentos
+                transmitidos entre gerações, que contribuem para manter viva a memória e a identidade caiçara.
+              </p>
+            </div>
+            <a href="#" class="lock-card group" aria-label="Abrir relatório 02">
+              <img src="./src/maps/mata_e_agua.jpg" alt="Capa do relatório 02" loading="lazy" class="h-full w-full object-cover" />
+              <span class="lock-badge"><svg viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor"><path d="M17 9V7a5 5 0 00-10 0v2H5v12h14V9h-2zm-8-2a3 3 0 016 0v2H9V7z"/></svg></span>
+            </a>
+          </article>
+        </div>
+
+        <!-- Mapas -->
+        <div class="mt-20 grid items-start gap-10 md:grid-cols-2">
+          <figure class="reveal">
+            <button type="button" data-src="./src/maps/barco_nome_da_ilha.jpg" data-cap="Guaraqueçaba — Ilha das Peças, Ilha do Superagui e Limite do Parque Nacional do Superagui" class="lb-trigger block w-full overflow-hidden rounded-2xl shadow-md">
+              <img src="./src/maps/barco_nome_da_ilha.jpg" alt="Mapa da Ilha das Peças e Ilha do Superagui" loading="lazy" class="aspect-[4/3] w-full object-cover transition-transform duration-500 hover:scale-105" />
+            </button>
+            <figcaption class="mt-4 text-left sm:text-justify text-sm leading-relaxed text-ink/80">
+              <strong class="text-amber-dark">Guaraqueçaba — Ilha das Peças e Ilha do Superagui.</strong> Limite do Parque Nacional do Superagui e Oceano Atlântico.
+            </figcaption>
+          </figure>
+
+          <figure class="reveal" style="transition-delay:.1s">
+            <button type="button" data-src="./src/maps/mata_e_agua.jpg" data-cap="Mapa das Unidades de Conservação da Área de Estudo" class="lb-trigger block w-full overflow-hidden rounded-2xl shadow-md">
+              <img src="./src/maps/mata_e_agua.jpg" alt="Mapa das Unidades de Conservação" loading="lazy" class="aspect-[4/3] w-full object-cover transition-transform duration-500 hover:scale-105" />
+            </button>
+            <figcaption class="mt-4 text-left sm:text-justify text-sm leading-relaxed text-ink/80">
+              <strong class="text-amber-dark">Unidades de Conservação.</strong> Área de estudo no litoral norte do Paraná.
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Mapa do litoral (largura total) -->
+        <figure class="reveal mt-12 rounded-2xl bg-white p-6 shadow-lg">
+          <button type="button" data-src="./src/maps/mapa_ilhas_goura.png" data-cap="Litoral Paranaense — No coração da Grande Reserva Mata Atlântica" class="lb-trigger block w-full overflow-hidden rounded-xl">
+            <img src="./src/maps/mapa_ilhas_goura.png" alt="Mapa ilustrado do Litoral Paranaense" loading="lazy" class="w-full object-cover transition-transform duration-500 hover:scale-[1.02]" />
+          </button>
+          <figcaption class="mt-4 text-sm leading-relaxed text-ink/85">
+            <strong class="text-forest">Litoral Paranaense:</strong> No coração da Grande Reserva Mata Atlântica, o litoral norte do Paraná abriga vilarejos, ilhas, pequenas comunidades tradicionais e inúmeras atrações pouco conhecidas de turistas e viajantes. Esta é uma região rica em biodiversidade, história, cultura e belezas naturais. Prepare-se para descobrir as surpresas do litoral norte do Paraná!
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================== GALERIA DE FOTOS — PRÉVIA (PÁGINA 7) ===================== -->
+    <section id="fotografias" class="py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-5">
+        <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
+          <h2 class="reveal text-3xl font-light uppercase tracking-wide sm:text-5xl">Galeria de Fotos</h2>
+          <a href="./galeria.html" class="btn-primary">Abrir galeria completa →</a>
+        </div>
+
+        <!-- Prévia com somente as fotos sem legendas (gerada pelo js/main.js) -->
+        <div id="galeriaPreview" class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- ===================== DIÁRIO DE BORDO (PÁGINAS 8, 9 E 10) ===================== -->
+    <section id="diario" class="relative overflow-hidden bg-sand/50 py-20 sm:py-28">
+      <div class="relative mx-auto max-w-3xl px-5">
+        <!-- Desenho da casinha -->
+        <img src="./src/diario/desenho_casinha.png" alt="" aria-hidden="true" loading="lazy" class="reveal mx-auto mb-6 h-28 w-auto object-contain sm:h-36" />
+
+        <h2 class="reveal text-center text-3xl font-light uppercase tracking-wide sm:text-5xl">Diário de Bordo</h2>
+
+        <p class="reveal mt-6 text-center text-lg font-medium leading-relaxed text-ink/85">
+          Este é um espaço para guardar os caminhos que percorri, com memórias, observações e
+          fragmentos do que não caberiam em uma reportagem. Aqui registro um pouco dos
+          bastidores da construção dessa trajetória: das viagens de barco, conversas, descobertas e
+          dúvidas. Com as impressões de quem chega de fora, tenta compreender um território e,
+          aos poucos, descobre que cada resposta abre uma nova pergunta.
+        </p>
+
+        <div class="mt-14 space-y-6 text-left sm:text-justify leading-relaxed text-ink/90">
+          <h3 class="text-xl font-bold text-forest pt-2">13 de setembro de 2025</h3>
+
+          <p>
+            A primeira vez que desembarquei na Ilha das Peças, é sábado de uma manhã nublada. Tudo é calmo, não há som de crianças
+            brincando, nem cachorros, o mar também é tranquilo e sem ondas.
+          </p>
+          <p>
+            O trapiche fica em frente a um restaurante onde os moradores observam os alunos do projeto de extensão, caminhando com
+            caixas de material de atendimento médico e didático. Caminhamos até o posto de saúde.
+          </p>
+          <p>
+            (Esse trecho estou resgatando da memória, refazendo os passos, e agora, com o trajeto fresco da minha última viagem, percebo
+            como a vila é bem menor do que pareceu na primeira vez.)
+          </p>
+          <p>
+            Nunca havia pisado em uma ilha antes, e conhecia pouco sobre o litoral paranaense, me limitava ao balneário de Pontal do Sul,
+            esticando até a Ilha do Mel, rota conhecida do turismo e nada mais.
+          </p>
+          <p>
+            Quando entrei oficialmente para o projeto de extensão da universidade, que está há alguns anos indo mensalmente até
+            comunidades caiçaras para atender nos postos de saúde e nas casas, percebi que meu nível de conhecimento sobre medicina e
+            a história caiçara eram bem similares.
+          </p>
+          <p>
+            Durante a viagem de barco, criava cenários de como seriam as casas, lembrava das ribeirinhas em estruturas de madeira e
+            barcos presos próximos delas.
+          </p>
+          <p>
+            A primeira surpresa: casas de tijolo, no chão mesmo, como um bairro metropolitano, algumas com muros, portões, janelas,
+            grades de metal branco modernas, com portas de vidro e telhas de barro, outras mais novas, de eternit, cinzas e onduladas.
+          </p>
+          <p>
+            Andávamos rápido e eu não conseguia capturar o suficiente de tudo aquilo, tudo de novo dali e, ao mesmo tempo, idêntico a
+            uma cidade do interior, com o varal de roupas em frente à porta, bicicletas no chão, a quadra de futebol e a escola municipal.
+          </p>
+          <p>
+            Há uma trilha formada pelas pisadas, que vai da lateral do restaurante guiando naturalmente ao postinho, a quantidade de
+            grama mostra o trajeto de maior circulação.
+          </p>
+          <p>
+            A minha cabeça girava enquanto conversava com moradoras, disso salvei algumas anotações no bloco de notas do celular, um
+            tipo de lista confusa:
+          </p>
+
+          <ul class="diary-entry list-disc space-y-2 pl-6 text-left">
+            <li>moradora vendeu a casa para curitibanos e, no lugar, fizeram um airbnb</li>
+            <li>há alguns gatos sem donos ao redor</li>
+            <li>um pinscher marrom faz companhia, como cachorros param numa ilha?</li>
+            <li>o restaurante é uma cooperativa só de mulheres</li>
+            <li>pessoas de fora estão construindo aqui para as férias</li>
+          </ul>
+
+          <!-- Foto do cachorro + desenho da baleia lado a lado do mesmo tamanho -->
+          <figure class="reveal my-8 rounded-2xl bg-white p-5 shadow-sm">
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <img src="./src/diario/cachorro_marrom.png" alt="Foto do cachorro que acompanhava a equipe" loading="lazy" class="aspect-square w-full rounded-xl object-cover" />
+              <div class="flex aspect-square w-full items-center justify-center rounded-xl bg-sand p-6">
+                <img src="./src/diario/desenho_baleia.png" alt="" aria-hidden="true" loading="lazy" class="h-4/5 w-4/5 object-contain" />
+              </div>
+            </div>
+            <figcaption class="mt-3 text-left text-sm text-ink/75">
+              Foto do cachorro que acompanhava a equipe. Foto: Vitória Smarci.
+            </figcaption>
+          </figure>
+
+          <p>
+            Perto do meio-dia, saí para explorar "o outro lado" da vila, com outras pessoas da equipe. Nessa outra
+            faixa de área havia casas modernas de alvenaria, deques, homens com roupas e coletes estilo "faria
+            lima", fazendo churrasco em uma varanda grande. No mar estavam barcos e jetskis cujo valor nenhum
+            de nós conseguia imaginar. Soubemos que ali era a parte conhecida da ilha como a faixa de veraneio
+            dos turistas que encontraram na vila a paz para as férias, descolada, regada a bebida cara e sertanejo.
+          </p>
+          <p>Éramos estrangeiros observando forasteiros.</p>
+          <p>
+            Na UBS conheci a Jéssica, que aguardava ser atendida, dela soube que a vila tem associação de
+            moradores, da qual ela é vice, e também presença do ICMBio. Na época ela era agente temporária.
+          </p>
+          <p>
+            Quem atendia era a Mariana, que ainda era médica terceirizada contratada pelo município, moradora
+            de Peças, cheia de histórias.
+          </p>
+          <p>
+            Finalizados os atendimentos, na volta para o trapiche, um barco cheio de homens sem camisa, uma
+            música alta tocava, pareciam mais de vinte. Seguravam cervejas e riam enquanto alguns faziam piadas
+            inaudíveis para as integrantes do projeto.
+          </p>
+          <p>
+            É um dos passeios vindos da terra vizinha, a Ilha do Mel. Parece que lá já não há o que os entreter mais.
+          </p>
+          <p>
+            Na volta de Peças, sabia que nada seria como antes. Um universo inteiro se abriu diante de mim, uma
+            curitibana pequenininha, com vontade de saber mais.
+          </p>
+
+          <!-- Desenho do chinelo -->
+          <div class="py-3 flex justify-center">
+            <img src="./src/diario/desenho_chinelo.png" alt="" aria-hidden="true" loading="lazy" class="h-24 w-auto object-contain" />
+          </div>
+
+          <p>
+            Em dezembro de 2025, reuni dados, relatórios, livros, reportagens, todo material que mencionasse a Ilha das Peças.
+            Meu estômago embrulhava com a ansiedade em pensar que um dia teria que encarar a viagem de barco sozinha
+            para concretizar o projeto de reportagem.
+          </p>
+          <p>
+            Segui pensando com quem deveria conversar, quais lugares fotografar, o que não poderia esquecer de jeito nenhum.
+            O check list ganhou páginas. Como fazer caber em uma web reportagem, na era do consumo rápido da informação,
+            tudo que atravessa a comunidade há séculos? A vida caiçara, a vida marinha, colonização, crise da saúde, a
+            especulação imobiliária, a religião, conflitos, proteção ambiental. Vou dar um jeito.
+          </p>
+          <p>
+            Com todas as pessoas com quem pretendo conversar avisadas, pauta alinhada, Vila das Peças, lá vou eu.
+          </p>
+
+          <h3 class="text-xl font-bold text-forest pt-4">30 de agosto de 2026</h3>
+
+          <p>
+            Saí de Curitiba sábado cedo com destino a Paranaguá, a cidade-mãe do Paraná, onde a colonização começou. Caminhei até a
+            ilha dos Valadares, conectada por uma ponte. Entrevistei um historiador. Era meio-dia e voltei para o trapiche de embarque
+            ainda zonza com o banho de informações.
+          </p>
+          <p>
+            No táxi náutico, como é chamado o transporte usado por moradores e turistas para chegar à ilha, um menino de uns 10 anos me
+            cobrou a passagem no valor de 40 reais para turistas e 30 reais para moradores. Além do piloto, eu e o garoto, mais uns seis
+            tripulantes. Nas bagagens, malas, caixas de comida, saco de batata, leite, latas de tinta e sacolas de roupas.
+          </p>
+
+          <!-- Foto do saco de batatas -->
+          <figure class="reveal my-8 rounded-2xl bg-white p-5 shadow-sm">
+            <img src="./src/diario/saco_de_batatas.png" alt="Saco de batatas transportado no barco até a ilha" loading="lazy" class="max-h-[440px] w-full rounded-xl object-cover" />
+            <figcaption class="mt-3 text-left text-sm text-ink/75">
+              O saco de batatas que dividiu o barco comigo até a ilha, chinelos havaianas, bolachas e amaciantes na mercearia da Vila. Foto: Vitória Smarci.
+            </figcaption>
+          </figure>
+
+          <p>
+            Sem sinal de internet de dados móveis, recorri logo na chegada à ajuda dos moradores e uma adolescente me guiou até a
+            pousada. A mesma trilha se estende para os fundos da ilha, e no caminho passamos por trás das casas dos turistas que ficam de
+            frente para o mar.
+          </p>
+
+          <!-- Foto do adolescente apressado + desenho do coqueiro do mesmo tamanho -->
+          <figure class="reveal my-8 rounded-2xl bg-white p-5 shadow-sm">
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <img src="./src/diario/adolescente_apressado.png" alt="Adolescente guiando pela trilha marcada no chão" loading="lazy" class="aspect-square w-full rounded-xl object-cover" />
+              <div class="flex aspect-square w-full items-center justify-center rounded-xl bg-sand p-6">
+                <img src="./src/diario/desenho_coqueiro.png" alt="" aria-hidden="true" loading="lazy" class="h-4/5 w-4/5 object-contain" />
+              </div>
+            </div>
+            <figcaption class="mt-3 text-left text-sm text-ink/75">
+              Adolescente apressado me guia pela trilha marcada no chão. Foto: Vitória Smarci.
+            </figcaption>
+          </figure>
+
+          <p>
+            Observo atentamente cada quintal, não há animais de estimação, apenas um morador tem um galinheiro de cerca bem
+            fechada com algumas galinhas.
+          </p>
+          <p>
+            O som dos pássaros é diferente, a mata também, nada ali me lembra algo antes conhecido.
+          </p>
+          <p>
+            Deixo a mala no quarto e saio em busca dos personagens. O dono do restaurante me indica falar com uma das mulheres da
+            cooperativa. Na volta para a pousada tiro fotos pela vila, detalhes da arquitetura, das prateleiras da mercearia cheia de
+            ultraprocessados, o pescador pintando um novo barco, outros varrendo as folhas da areia, um capricho quase excessivo.
+          </p>
+          <p>
+            No fim da tarde já estava marcada entrevista com a Jéssica, liderança comunitária: junto da filha recém-nascida, da mãe e da avó
+            dela. Quatro gerações de mulheres e fases muito diferentes do mesmo território para compartilhar.
+          </p>
+          <p>
+            Dormi às 22h com o som de uma chuva densa, preocupada com a possibilidade de gravações no dia seguinte. Domingo de
+            manhã, um novo dia cinza, e após o café saí a andar pela praia e registrar algumas informações.
+          </p>
+          <p>
+            Às 9h, a marca deixada pela maré em frente às casas dos turistas mostra a menor distância do mar até a porta das casas, os
+            gravetos e lixos domésticos acumulados na areia indicam: 60 pés aonde o mar chegou em um dia de chuva. Naquele momento
+            contei de novo até a água, 120 pés, um coladinho no outro.
+          </p>
+          <p>
+            No horizonte há um pescador jogando a rede de arrasto e, a cerca de cinco metros dele, um turista faz manobras de jetski
+            enquanto conhecidos dele riem num barco próximo. Sigo andando para o trapiche.
+          </p>
+          <p>
+            Está garoando, um chuvisco gelado. Perto dos meus pés estão os botos e a curiosidade parece ser mútua. Ficam em uma dança
+            de subir e descer na água. Brigam entre si, são duas duplas. A divisão do espaço marítimo entre eles é clara.
+          </p>
+          <p>
+            Encontro Mariana, que agora é apenas uma moradora formada em medicina, não mais a serviço do Estado. Ela me leva até
+            a casa do Renato, liderança caiçara. Nossa entrevista foi um sucesso, com a Mariana também. Almoçamos juntas e me
+            despedi dela para retornar a Paranaguá.
+          </p>
+          <p>
+            Os moradores me olham como se a pergunta de quem eu era e o que fazia por ali viesse à boca e voltasse para dentro. Um
+            cachorro enorme de um pescador se aproxima, sente meu cheiro urbano e se afasta, não tinha nada do interesse dele.
+          </p>
+          <p>
+            Olho a bolsa mil vezes, com a certeza de estar com os cartões de memória. Não esqueci nada. Só o meu guarda-chuva, o
+            que me fez pegar um temporal de lavar a alma no centro histórico de Paranaguá. Na rodoviária me chacoalhava como um
+            cão molhado.
+          </p>
+          <p>
+            Domingo à noite, de volta à minha terra-mãe, fui recebida com granizo em Curitiba, no "bem-vinda de volta" mais agressivo
+            que já recebi.
+          </p>
+
+          <!-- Imagem retangular desenho_peixes intercalando o texto -->
+          <div class="my-8 flex justify-center rounded-2xl bg-white p-6 shadow-sm">
+            <img src="./src/diario/desenho_peixes.png" alt="" aria-hidden="true" loading="lazy" class="h-32 w-full max-w-md object-contain" />
+          </div>
+
+          <p>
+            Um ano depois do meu primeiro encontro com a vila, em setembro de 2025, muita coisa mudou. Agora, em setembro de
+            2026, as entrevistas com geógrafos, bióloga, advogada e ativistas estão finalizadas. Meu armazenamento já não dá conta de
+            tanto material. Uma das maiores ironias da vida moderna: até as nuvens têm limite.
+          </p>
+          <p>
+            É novembro e, por conta do El Niño, Chuvitiba (apelido para os íntimos) ainda reproduz dias frios, enquanto me pergunto se
+            passarei o Natal de coberta e chocolate quente. Finalizo o podcast e as entrevistas em vídeo.
+          </p>
+          <p>
+            Essa pequena comunidade me levou muito além do jornalismo, atravessei a antropologia, a geografia e a biologia, entre
+            relatórios, conversas, aulas improvisadas com entrevistados e aprendizados com os próprios moradores sobre cultura,
+            burocracia, habitação e trabalho.
+          </p>
+          <p>
+            O que começou com uma viagem de barco e muitas perguntas se transformou em uma jornada de descobertas que ainda
+            estou tentando organizar em palavras, imagens e sons.
+          </p>
+          <p>
+            Espero que este diário desperte em você a mesma vontade que me trouxe até aqui: ver e ouvir atentamente a Vila das
+            Peças.
+          </p>
+
+          <!-- Desenho da onda + Orelhão velho -->
+          <div class="pt-4 flex justify-center">
+            <img src="./src/diario/desenho_onda.png" alt="" aria-hidden="true" loading="lazy" class="h-24 w-auto object-contain" />
+          </div>
+
+          <figure class="reveal my-8 rounded-2xl bg-white p-5 shadow-sm">
+            <img src="./src/diario/orelhao_velho.png" alt="Orelhão sobrevivente na Vila das Peças" loading="lazy" class="max-h-[460px] w-full rounded-xl object-cover" />
+            <figcaption class="mt-3 text-left text-sm text-ink/75">
+              Orelhão sobrevivente ao fim de um império. Acredito que a empresa não vá até lá para retirá-lo. Foto: Vitória Smarci.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="bg-forest py-12 text-sm text-white/85">
+    <div class="mx-auto grid max-w-7xl items-center gap-8 px-5 text-center md:grid-cols-3 md:text-left">
+      <div>
+        <p class="font-bold tracking-[0.25em] text-white">ILHA SEM ESTADO?</p>
+        <p class="mt-2 text-xs text-white/75">A vida, os desafios e as transformações da comunidade da Vila das Peças</p>
+      </div>
+
+      <div class="space-y-1 text-center">
+        <p class="font-semibold text-white">Vitória da Silva Smarci</p>
+        <p><a href="mailto:vitoriasmarci.jor@gmail.com" class="text-amber hover:underline">vitoriasmarci.jor@gmail.com</a></p>
+        <p><a href="tel:+5541988091058" class="hover:text-white">41 98809-1058</a></p>
+      </div>
+
+      <div class="md:text-right">
+        <span class="block text-[11px] uppercase tracking-widest text-white/60">Desenvolvido por</span>
+        <span class="font-extrabold tracking-widest text-white">CAMUTZE SOLUTIONS</span>
+        <div class="mt-3">
+          <a href="#topo" class="btn-ghost inline-block text-xs">Voltar ao topo ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== LIGHTBOX (ampliar fotos) ===================== -->
+  <div id="lightbox" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/90 p-4" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+    <button id="lbClose" type="button" class="absolute right-5 top-5 text-4xl leading-none text-white" aria-label="Fechar">×</button>
+    <button id="lbPrev" type="button" class="hidden absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/15 px-3.5 py-2 text-2xl text-white hover:bg-white/30" aria-label="Foto anterior">‹</button>
+    <button id="lbNext" type="button" class="hidden absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/15 px-3.5 py-2 text-2xl text-white hover:bg-white/30" aria-label="Próxima foto">›</button>
+    <figure class="max-h-full max-w-4xl">
+      <img id="lbImg" src="" alt="" class="max-h-[80vh] w-full rounded-lg object-contain" />
+      <figcaption id="lbCap" class="mt-3 text-center text-sm text-white/80"></figcaption>
+    </figure>
+  </div>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
